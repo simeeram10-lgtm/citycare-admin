@@ -138,9 +138,9 @@ export default function SystemAdminPage() {
         {/* Table Section */}
         <div className={`space-y-4 sm:space-y-6 ${darkMode ? 'bg-slate-800/60 border-cyan-700/50' : 'bg-white/50 border-teal-200/30'} backdrop-blur-sm rounded-2xl p-4 sm:p-6 transition-all duration-500`}>
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4">
-            <h2 className="text-xl sm:text-2xl font-bold text-teal-900 dark:text-white flex items-center gap-2">
+            <h2 className="text-xl sm:text-2xl font-bold flex items-center gap-2">
               <span className="inline-block w-1 h-8 bg-gradient-to-b from-teal-600 to-cyan-600 rounded-full"></span>
-              Officers ({officers.length})
+              <span style={{color: darkMode ? '#cffafe' : '#000', fontWeight: 700}}>Officers</span> <span className="ml-1 text-xs sm:text-base font-semibold" style={{color: darkMode ? '#a5f3fc' : '#000', fontWeight: 600}}>({officers.length})</span>
             </h2>
             {officers.length > 0 && (
               <button
