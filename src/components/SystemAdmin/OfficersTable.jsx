@@ -104,14 +104,13 @@ export default function OfficersTable({ officers, onOfficersUpdate }) {
                       {officer.role === 'unit_officer' ? 'UNIT' : 'FIELD'}
                     </span>
                   </td>
-                  <td className="px-3 sm:px-4 py-3 sticky right-0 z-40 transition-colors duration-500" style={{ background: 'white', boxShadow: '0 0 8px 2px rgba(0,0,0,0.08)' }}>
+                  <td className="px-3 sm:px-4 py-3 sticky right-0 z-40 transition-colors duration-500 bg-white dark:bg-slate-900 shadow-md">
                     <div className="flex gap-2">
                       <button
                         onClick={() => handleEdit(officer, index)}
-                        className="p-2 min-w-[32px] min-h-[32px] flex items-center justify-center rounded-lg border border-teal-200 shadow z-50"
+                        className="p-2 min-w-[32px] min-h-[32px] flex items-center justify-center rounded-lg border border-teal-200 shadow z-50 bg-white dark:bg-slate-900"
                         tabIndex={0}
                         aria-label="Edit Officer"
-                        style={{ background: 'white', boxShadow: '0 2px 8px 0 rgba(0,0,0,0.10)' }}
                       >
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4" style={{ color: '#0d9488' }}>
                           <path d="M12 20h9" />
@@ -120,10 +119,9 @@ export default function OfficersTable({ officers, onOfficersUpdate }) {
                       </button>
                       <button
                         onClick={() => handleDelete(index)}
-                        className="p-2 min-w-[32px] min-h-[32px] flex items-center justify-center rounded-lg border border-red-200 shadow z-50"
+                        className="p-2 min-w-[32px] min-h-[32px] flex items-center justify-center rounded-lg border border-red-200 shadow z-50 bg-white dark:bg-slate-900"
                         tabIndex={0}
                         aria-label="Delete Officer"
-                        style={{ background: 'white', boxShadow: '0 2px 8px 0 rgba(0,0,0,0.10)' }}
                       >
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4" style={{ color: '#dc2626' }}>
                           <path d="M3 6h18" />
