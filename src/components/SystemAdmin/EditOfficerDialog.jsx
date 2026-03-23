@@ -26,7 +26,6 @@ export default function EditOfficerDialog({ isOpen, officer, onClose, onUpdate }
     if (!formData.state?.trim()) newErrors.state = 'Required'
     if (!formData.city?.trim()) newErrors.city = 'Required'
     if (!formData.region?.trim()) newErrors.region = 'Required'
-    if (!formData.district?.trim()) newErrors.district = 'Required'
     if (!formData.department?.trim()) newErrors.department = 'Required'
     setErrors(newErrors)
     return Object.keys(newErrors).length === 0
@@ -126,7 +125,7 @@ export default function EditOfficerDialog({ isOpen, officer, onClose, onUpdate }
             </div>
 
             <div>
-              <label className="block text-xs sm:text-sm font-semibold text-teal-900 dark:text-white mb-2">Region</label>
+              <label className="block text-xs sm:text-sm font-semibold text-teal-900 dark:text-white mb-2">Region / District</label>
               <input
                 type="text"
                 value={formData.region || ''}
@@ -134,17 +133,6 @@ export default function EditOfficerDialog({ isOpen, officer, onClose, onUpdate }
                 className="w-full px-3 sm:px-4 py-2 sm:py-3 border-2 border-teal-200 dark:border-cyan-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 dark:focus:ring-cyan-500 focus:border-teal-500 dark:focus:border-cyan-500 transition-all duration-300 text-xs sm:text-sm"
               />
               {errors.region && <p className="text-red-500 text-xs mt-1">{errors.region}</p>}
-            </div>
-
-            <div>
-              <label className="block text-xs sm:text-sm font-semibold text-teal-900 dark:text-white mb-2">District</label>
-              <input
-                type="text"
-                value={formData.district || ''}
-                onChange={(e) => setFormData({ ...formData, district: e.target.value })}
-                className="w-full px-3 sm:px-4 py-2 sm:py-3 border-2 border-teal-200 dark:border-cyan-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 dark:focus:ring-cyan-500 focus:border-teal-500 dark:focus:border-cyan-500 transition-all duration-300 text-xs sm:text-sm"
-              />
-              {errors.district && <p className="text-red-500 text-xs mt-1">{errors.district}</p>}
             </div>
 
             <div>
