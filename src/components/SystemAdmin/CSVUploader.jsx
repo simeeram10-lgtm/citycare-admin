@@ -46,8 +46,7 @@ export default function CSVUploader({ onOfficersUpdate }) {
           phone: row.phone || row.mobile || row.phonenumber || row['phone_number'] || '',
           state: row.state || row.states || '',
           city: row.city || row.cities || '',
-          region: row.region || row.regions || row.zone || '',
-          district: row.district || row['district_region'] || row.taluka || '',
+          region: row.region || row.regions || row.zone || row.district || row['district_region'] || row.taluka || '',
           department: row.department || row.dept || row.departments || '',
           role: row.role || row.roles || '',
           specialisation: row.specialisation || row.specialization || row.spec || '',
@@ -183,7 +182,7 @@ export default function CSVUploader({ onOfficersUpdate }) {
             Drag & drop or click to upload officer data
           </p>
           <div className="text-xs sm:text-sm bg-teal-100/70 dark:bg-cyan-900/40 px-3 sm:px-4 py-2 rounded-lg sm:rounded-xl font-mono text-teal-800 dark:text-cyan-200 border border-teal-200/80 dark:border-cyan-800/60">
-            fullName, email, dob, phone, state, city, region, district, department, role
+            fullName, email, dob, phone, state, city, region / district, department, role
           </div>
         </div>
       </div>
