@@ -9,27 +9,39 @@ export function ThemeProvider({ children }) {
   const [darkMode, setDarkMode] = useState(false)
 
   useEffect(() => {
-    const isDark = localStorage.getItem('darkMode') === 'true'
-    setDarkMode(isDark)
-    if (isDark) {
-      document.documentElement.classList.add('dark')
+    let isDark;
+    const stored = localStorage.getItem('darkMode');
+    if (stored === null) {
+      // No preference saved, use system preference
+      isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
     } else {
-      document.documentElement.classList.remove('dark')
+      isDark = stored === 'true';
     }
-    setMounted(true)
-  }, [])
+    setDarkMode(isDark);
+    if (isDark) {
+      document.documentElement.classList.add('dark');
+      document.body.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      document.body.classList.remove('dark');
+    }
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
-    if (!mounted) return
-    localStorage.setItem('darkMode', darkMode.toString())
+    if (!mounted) return;
+    localStorage.setItem('darkMode', darkMode.toString());
     if (darkMode) {
-      document.documentElement.classList.add('dark')
+      document.documentElement.classList.add('dark');
+      document.body.classList.add('dark');
     } else {
-      document.documentElement.classList.remove('dark')
+      document.documentElement.classList.remove('dark');
+      document.body.classList.remove('dark');
     }
-    console.log('Dark mode toggled:', darkMode)
-    console.log('HTML classes:', document.documentElement.className)
-  }, [darkMode, mounted])
+    console.log('Dark mode toggled:', darkMode);
+    console.log('HTML classes:', document.documentElement.className);
+    console.log('Body classes:', document.body.className);
+  }, [darkMode, mounted]);
 
   useEffect(() => {
     window.toggleDarkMode = () => setDarkMode(prev => !prev)
