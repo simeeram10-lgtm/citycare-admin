@@ -9,6 +9,12 @@ export const validateOfficerData = (data = []) => {
     const rowNumber = index + 1
     let isValid = true
 
+
+    // Auto-fill district with region if district is missing
+    if (!row.district && row.region) {
+      row.district = row.region;
+    }
+
     const requiredFields = {
       fullName: row.fullName?.trim?.(),
       email: row.email?.trim?.(),
@@ -25,7 +31,7 @@ export const validateOfficerData = (data = []) => {
     for (const [field, value] of Object.entries(requiredFields)) {
       if (!value) {
         errors.push(`Row ${rowNumber}: Missing required field "${field}"`)
-          console.warn(`[VALIDATION] Row ${rowNumber} rejected: missing field '${field}'. Row data:`, row)
+        console.warn(`[VALIDATION] Row ${rowNumber} rejected: missing field '${field}'. Row data:`, row)
         isValid = false
         break
       }
