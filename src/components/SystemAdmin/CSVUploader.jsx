@@ -77,14 +77,14 @@ export default function CSVUploader({ onOfficersUpdate }) {
       console.log('📄 CSV Preview:', text.substring(0, 300))
 
       const rawData = parseCSV(text)
+      console.log('🟡 [DEBUG] Parsed rawData:', rawData)
       if (rawData.length === 0) {
         toast.error('❌ No valid data found in CSV')
         return
       }
 
-      console.log('📊 Raw parsed:', rawData[0])
-
       const validatedOfficers = validateOfficerData(rawData)
+      console.log('🟢 [DEBUG] Validated officers:', validatedOfficers)
       
       if (validatedOfficers.length === 0) {
         toast.error('❌ No valid officers. Check: fullName, email, role required')
