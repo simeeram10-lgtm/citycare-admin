@@ -1,5 +1,6 @@
 import { Inter } from 'next/font/google'
 import './globals.css'
+
 import { Toaster } from 'react-hot-toast'
 import './theme.css'
 
@@ -14,10 +15,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="scroll-smooth">
       <body className={inter.className}>
-        <ThemeProvider>
-          <ThemeToggleButton />
-          {children}
-        </ThemeProvider>
+        {children}
         <Toaster 
           position="top-right"
           toastOptions={{
