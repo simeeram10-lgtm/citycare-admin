@@ -1,0 +1,29 @@
+/* theme.css */
+.theme-light {
+  --bg: #f8fafc;
+  --text: #22223b;
+  --panel: #fff;
+  --accent: #0ea5e9;
+}
+
+.theme-dark {
+  --bg: #18181b;
+  --text: #f1f5f9;
+  --panel: #23272f;
+  --accent: #38bdf8;
+}
+
+body,
+.theme-light,
+.theme-dark {
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.3s, color 0.3s;
+}
+
+.upload-panel,
+.officers-table {
+  background: var(--panel);
+  color: var(--text);
+  border: 1px solid var(--accent);
+}

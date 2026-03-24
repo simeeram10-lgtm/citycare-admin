@@ -1,7 +1,9 @@
 import { Inter } from 'next/font/google'
 import './globals.css'
 import { Toaster } from 'react-hot-toast'
-import { ThemeProvider } from '@/components/ThemeProvider'
+import { ThemeProvider } from '@/components/ThemeContext'
+import ThemeToggleButton from '@/components/ThemeToggleButton'
+import './theme.css'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -13,8 +15,9 @@ const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${inter.className} bg-gradient-to-br from-teal-50 to-cyan-50 dark:from-slate-900 dark:to-slate-800 transition-colors duration-500`}>
+      <body className={inter.className}>
         <ThemeProvider>
+          <ThemeToggleButton />
           {children}
         </ThemeProvider>
         <Toaster 
