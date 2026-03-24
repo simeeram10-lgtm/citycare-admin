@@ -15,14 +15,13 @@ import OfficersTable from '@/components/SystemAdmin/OfficersTable'
 import AddOfficerDialog from '@/components/SystemAdmin/AddOfficerDialog'
 import { transformOfficerData } from '@/lib/transformData'
 import toast from 'react-hot-toast'
-import { ThemeProvider } from '@/components/ThemeContext'
+import { ThemeProvider, useTheme } from '@/components/ThemeContext'
 import ThemeToggleButton from '@/components/ThemeToggleButton'
 
 export default function SystemAdminPage() {
   const [officers, setOfficers] = useState([])
   const [isAddDialogOpen, setIsAddDialogOpen] = useState(false)
-  // Remove all system theme detection. Only app state controls theme.
-  const [darkMode, setDarkMode] = useState(false)
+  const { darkMode, setDarkMode } = useTheme ? useTheme() : { darkMode: false, setDarkMode: () => {} }
 
   const handleOfficersUpdate = (newOfficers) => {
     setOfficers(newOfficers)
@@ -52,21 +51,21 @@ export default function SystemAdminPage() {
   return (
     <ThemeProvider>
       <ThemeToggleButton />
-    <div className="min-h-screen transition-all duration-500 p-3 sm:p-6 md:p-8">
+      <div className="min-h-screen transition-all duration-500 p-3 sm:p-6 md:p-8 bg-white text-black dark:bg-slate-900 dark:text-white">
       {/* Header Section */}
-      <div className="max-w-7xl mx-auto mb-6 sm:mb-8 transition-all duration-500 backdrop-blur-sm rounded-2xl p-4 sm:p-6">
+      <div className="max-w-7xl mx-auto mb-6 sm:mb-8 transition-all duration-500 backdrop-blur-sm rounded-2xl p-4 sm:p-6 bg-white/80 dark:bg-slate-800/80">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-6">
           <div className="flex-1">
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-teal-600 to-cyan-600 bg-clip-text text-transparent mb-1 sm:mb-2 leading-tight pb-1">
               CityCare Admin
             </h1>
-            <p className="text-sm sm:text-base md:text-lg text-teal-700 font-medium">Officer Onboarding Panel</p>
+            <p className="text-sm sm:text-base md:text-lg text-teal-700 dark:text-cyan-200 font-medium">Officer Onboarding Panel</p>
           </div>
           {/* Theme toggle and actions remain, but no dark: classes */}
           <div className="flex items-center gap-2 sm:gap-3 flex-wrap sm:flex-nowrap">
             <button
               onClick={() => setDarkMode(!darkMode)}
-              className="p-2.5 sm:p-3 rounded-2xl bg-gradient-to-br from-yellow-300 to-amber-300 hover:from-yellow-400 hover:to-amber-400 transition-all duration-500 flex-shrink-0 shadow-lg hover:shadow-xl transform hover:scale-110 active:scale-95"
+              className="p-2.5 sm:p-3 rounded-2xl bg-gradient-to-br from-yellow-300 to-amber-300 hover:from-yellow-400 hover:to-amber-400 transition-all duration-500 flex-shrink-0 shadow-lg hover:shadow-xl transform hover:scale-110 active:scale-95 dark:bg-gradient-to-br dark:from-slate-700 dark:to-slate-900 dark:text-white"
               title={darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
             >
               {darkMode ? (
@@ -108,11 +107,11 @@ export default function SystemAdminPage() {
         </div>
 
         {/* Table Section */}
-        <div className={`space-y-4 sm:space-y-6 ${darkMode ? 'bg-slate-800/60 border-cyan-700/50' : 'bg-white/50 border-teal-200/30'} backdrop-blur-sm rounded-2xl p-4 sm:p-6 transition-all duration-500`}>
+        <div className="space-y-4 sm:space-y-6 bg-white/50 border-teal-200/30 dark:bg-slate-800/60 dark:border-cyan-700/50 backdrop-blur-sm rounded-2xl p-4 sm:p-6 transition-all duration-500">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4">
             <h2 className="text-xl sm:text-2xl font-bold flex items-center gap-2">
               <span className="inline-block w-1 h-8 bg-gradient-to-b from-teal-600 to-cyan-600 rounded-full"></span>
-              <span style={{color: darkMode ? '#cffafe' : '#000', fontWeight: 700}}>Officers</span> <span className="ml-1 text-xs sm:text-base font-semibold" style={{color: darkMode ? '#a5f3fc' : '#000', fontWeight: 600}}>({officers.length})</span>
+              <span className="font-bold text-black dark:text-cyan-100">Officers</span> <span className="ml-1 text-xs sm:text-base font-semibold text-black dark:text-cyan-200">({officers.length})</span>
             </h2>
             {officers.length > 0 && (
               <button
