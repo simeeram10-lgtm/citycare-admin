@@ -1,3 +1,4 @@
+import { ThemeProvider } from '@/components/ThemeContext'
 import { Inter } from 'next/font/google'
 import './globals.css'
 
@@ -14,23 +15,25 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="scroll-smooth">
       <body className={`${inter.className} bg-gray-100 dark:bg-slate-900 text-black dark:text-white`}>
-        {children}
-        <Toaster 
-          position="top-right"
-          toastOptions={{
-            style: {
-              background: '#0f766e',
-              color: 'white',
-              backdropFilter: 'blur(10px)',
-            },
-            error: {
+        <ThemeProvider>
+          {children}
+          <Toaster 
+            position="top-right"
+            toastOptions={{
               style: {
-                background: '#dc2626',
-                background: '#059669',
+                background: '#0f766e',
+                color: 'white',
+                backdropFilter: 'blur(10px)',
               },
-            },
-          }}
-        />
+              error: {
+                style: {
+                  background: '#dc2626',
+                  background: '#059669',
+                },
+              },
+            }}
+          />
+        </ThemeProvider>
       </body>
     </html>
   )
