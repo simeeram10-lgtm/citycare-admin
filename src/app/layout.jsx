@@ -1,8 +1,6 @@
 import { Inter } from 'next/font/google'
 import './globals.css'
 import { Toaster } from 'react-hot-toast'
-import { ThemeProvider } from '@/components/ThemeContext'
-import ThemeToggleButton from '@/components/ThemeToggleButton'
 import './theme.css'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -31,10 +29,6 @@ export default function RootLayout({ children }) {
             error: {
               style: {
                 background: '#dc2626',
-              },
-            },
-            success: {
-              style: {
                 background: '#059669',
               },
             },

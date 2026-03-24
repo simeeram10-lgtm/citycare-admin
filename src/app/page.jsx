@@ -15,6 +15,8 @@ import OfficersTable from '@/components/SystemAdmin/OfficersTable'
 import AddOfficerDialog from '@/components/SystemAdmin/AddOfficerDialog'
 import { transformOfficerData } from '@/lib/transformData'
 import toast from 'react-hot-toast'
+import { ThemeProvider } from '@/components/ThemeContext'
+import ThemeToggleButton from '@/components/ThemeToggleButton'
 
 export default function SystemAdminPage() {
   const [mounted, setMounted] = useState(false)
@@ -86,6 +88,8 @@ export default function SystemAdminPage() {
   }
 
   return (
+    <ThemeProvider>
+      <ThemeToggleButton />
     <div className={`min-h-screen transition-all duration-500 ${darkMode ? 'bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800 text-cyan-50' : 'bg-gradient-to-br from-teal-50 to-cyan-50 text-gray-900'} p-3 sm:p-6 md:p-8`}>
       {/* Header Section */}
       <div className={`max-w-7xl mx-auto mb-6 sm:mb-8 transition-all duration-500 ${darkMode ? 'bg-slate-800/40 border-cyan-700/40' : 'bg-white/40 border-teal-200/40'} backdrop-blur-sm rounded-2xl p-4 sm:p-6`}>
@@ -177,5 +181,6 @@ export default function SystemAdminPage() {
         onAddOfficer={handleAddOfficer}
       />
     </div>
+    </ThemeProvider>
   )
 }
