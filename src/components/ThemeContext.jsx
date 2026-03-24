@@ -12,6 +12,7 @@ export function ThemeProvider({ children }) {
     if (typeof window !== "undefined") {
       document.documentElement.classList.remove("dark", "light");
       document.documentElement.classList.add(theme === "dark" ? "dark" : "light");
+      console.log("[ThemeProvider] Set html class to:", document.documentElement.className);
     }
   }, [theme]);
 
