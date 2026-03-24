@@ -6,13 +6,10 @@
     --foreground: 222.2 84% 4.9%;
   }
 
-  html.dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-  }
+
 
   body {
-    @apply bg-gradient-to-br from-teal-50 to-cyan-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-800;
+    @apply bg-gradient-to-br from-teal-50 to-cyan-50;
   }
 
   /* Comprehensive color transitions for all elements */
