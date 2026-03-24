@@ -25,6 +25,7 @@ export const validateOfficerData = (data = []) => {
     for (const [field, value] of Object.entries(requiredFields)) {
       if (!value) {
         errors.push(`Row ${rowNumber}: Missing required field "${field}"`)
+          console.warn(`[VALIDATION] Row ${rowNumber} rejected: missing field '${field}'. Row data:`, row)
         isValid = false
         break
       }
@@ -35,6 +36,7 @@ export const validateOfficerData = (data = []) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     if (!emailRegex.test(row.email)) {
       errors.push(`Row ${rowNumber}: Invalid email format "${row.email}"`)
+        console.warn(`[VALIDATION] Row ${rowNumber} rejected: invalid email '${row.email}'. Row data:`, row)
       return
     }
 
