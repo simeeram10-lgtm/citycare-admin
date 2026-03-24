@@ -39,6 +39,10 @@ function SystemAdminPageContent() {
     }
 
     const result = transformOfficerData(officers)
+          {/* Diagnostic test div for Tailwind dark mode */}
+          <div className="w-full p-4 mb-4 bg-red-500 dark:bg-blue-900 text-white text-center rounded">
+            If you see BLUE in dark mode and RED in light mode, Tailwind dark styles are working.
+          </div>
     console.log('=== CITYCARE DATABASE SUBMISSION ===')
     console.log('USERS:', result.users)
     console.log('UNIT OFFICERS:', result.unitOfficers)
