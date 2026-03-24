@@ -65,9 +65,8 @@ function SystemAdminPageContent() {
             </h1>
             <p className="text-sm sm:text-base md:text-lg text-teal-700 dark:text-cyan-200 font-medium">Officer Onboarding Panel</p>
           </div>
-          {/* Theme toggle and actions remain, but no dark: classes */}
+          {/* Actions without theme toggle */}
           <div className="flex items-center gap-2 sm:gap-3 flex-wrap sm:flex-nowrap">
-            <ThemeToggleButton />
             <button
               onClick={handleSubmitToDatabase}
               disabled={officers.length === 0}
