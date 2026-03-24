@@ -18,10 +18,10 @@ import toast from 'react-hot-toast'
 import { ThemeProvider, useTheme } from '@/components/ThemeContext'
 import ThemeToggleButton from '@/components/ThemeToggleButton'
 
-export default function SystemAdminPage() {
+function SystemAdminPageContent() {
   const [officers, setOfficers] = useState([])
   const [isAddDialogOpen, setIsAddDialogOpen] = useState(false)
-  const { darkMode, setDarkMode } = useTheme ? useTheme() : { darkMode: false, setDarkMode: () => {} }
+  const { darkMode, setDarkMode } = useTheme();
 
   const handleOfficersUpdate = (newOfficers) => {
     setOfficers(newOfficers)
@@ -49,8 +49,8 @@ export default function SystemAdminPage() {
   }
 
   return (
-    <ThemeProvider>
-      <ThemeToggleButton />
+    <>
+      {/* ThemeToggleButton removed from above header */}
       <div className="min-h-screen transition-all duration-500 p-3 sm:p-6 md:p-8 bg-white text-black dark:bg-slate-900 dark:text-white">
       {/* Header Section */}
       <div className="max-w-7xl mx-auto mb-6 sm:mb-8 transition-all duration-500 backdrop-blur-sm rounded-2xl p-4 sm:p-6 bg-white/80 dark:bg-slate-800/80">
@@ -63,17 +63,7 @@ export default function SystemAdminPage() {
           </div>
           {/* Theme toggle and actions remain, but no dark: classes */}
           <div className="flex items-center gap-2 sm:gap-3 flex-wrap sm:flex-nowrap">
-            <button
-              onClick={() => setDarkMode(!darkMode)}
-              className="p-2.5 sm:p-3 rounded-2xl bg-gradient-to-br from-yellow-300 to-amber-300 hover:from-yellow-400 hover:to-amber-400 transition-all duration-500 flex-shrink-0 shadow-lg hover:shadow-xl transform hover:scale-110 active:scale-95 dark:bg-gradient-to-br dark:from-slate-700 dark:to-slate-900 dark:text-white"
-              title={darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
-            >
-              {darkMode ? (
-                <span className="text-xl animate-pulse-slow">🌙</span>
-              ) : (
-                <span className="text-xl animate-spin-slow">☀️</span>
-              )}
-            </button>
+            <ThemeToggleButton />
             <button
               onClick={handleSubmitToDatabase}
               disabled={officers.length === 0}
@@ -140,6 +130,14 @@ export default function SystemAdminPage() {
         onAddOfficer={handleAddOfficer}
       />
     </div>
-    </ThemeProvider>
+    </>
   )
+}
+
+export default function SystemAdminPage() {
+  return (
+    <ThemeProvider>
+      <SystemAdminPageContent />
+    </ThemeProvider>
+  );
 }
