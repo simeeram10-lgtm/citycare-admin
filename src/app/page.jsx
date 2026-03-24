@@ -21,7 +21,7 @@ import ThemeToggleButton from '@/components/ThemeToggleButton'
 function SystemAdminPageContent() {
   const [officers, setOfficers] = useState([])
   const [isAddDialogOpen, setIsAddDialogOpen] = useState(false)
-  const { darkMode, setDarkMode } = useTheme();
+  const { theme } = useTheme();
 
   const handleOfficersUpdate = (newOfficers) => {
     setOfficers(newOfficers)

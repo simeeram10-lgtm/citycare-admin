@@ -8,11 +8,16 @@ export function ThemeProvider({ children }) {
 
   const toggleTheme = () => setTheme((t) => (t === "light" ? "dark" : "light"));
 
+  React.useEffect(() => {
+    if (typeof window !== "undefined") {
+      document.documentElement.classList.remove("dark", "light");
+      document.documentElement.classList.add(theme === "dark" ? "dark" : "light");
+    }
+  }, [theme]);
+
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      <div className={theme === "dark" ? "theme-dark" : "theme-light"}>
-        {children}
-      </div>
+      {children}
     </ThemeContext.Provider>
   );
 }

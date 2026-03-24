@@ -12,10 +12,6 @@
     @apply bg-gradient-to-br from-teal-50 to-cyan-50 text-black;
   }
 
-  body.theme-dark {
-    @apply bg-slate-900 text-white;
-  }
-
   /* Comprehensive color transitions for all elements */
   * {
     @apply transition-colors duration-500 ease-in-out;
