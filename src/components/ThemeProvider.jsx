@@ -9,28 +9,13 @@ export function ThemeProvider({ children }) {
   const [darkMode, setDarkMode] = useState(false)
 
   useEffect(() => {
-    let isDark;
-    const stored = localStorage.getItem('darkMode');
-    if (stored === null) {
-      // No preference saved, use system preference
-      isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    } else {
-      isDark = stored === 'true';
-    }
-    setDarkMode(isDark);
-    if (isDark) {
-      document.documentElement.classList.add('dark');
-      document.body.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      document.body.classList.remove('dark');
-    }
+    // Only use app state, never system theme
     setMounted(true);
   }, []);
 
   useEffect(() => {
     if (!mounted) return;
-    localStorage.setItem('darkMode', darkMode.toString());
+    // Only update app theme, never system
     if (darkMode) {
       document.documentElement.classList.add('dark');
       document.body.classList.add('dark');
@@ -38,9 +23,6 @@ export function ThemeProvider({ children }) {
       document.documentElement.classList.remove('dark');
       document.body.classList.remove('dark');
     }
-    console.log('Dark mode toggled:', darkMode);
-    console.log('HTML classes:', document.documentElement.className);
-    console.log('Body classes:', document.body.className);
   }, [darkMode, mounted]);
 
   useEffect(() => {

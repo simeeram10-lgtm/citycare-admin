@@ -19,48 +19,10 @@ import { ThemeProvider } from '@/components/ThemeContext'
 import ThemeToggleButton from '@/components/ThemeToggleButton'
 
 export default function SystemAdminPage() {
-  const [mounted, setMounted] = useState(false)
   const [officers, setOfficers] = useState([])
   const [isAddDialogOpen, setIsAddDialogOpen] = useState(false)
+  // Remove all system theme detection. Only app state controls theme.
   const [darkMode, setDarkMode] = useState(false)
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      let isDark;
-      const stored = localStorage.getItem('darkMode');
-      if (stored === null) {
-        isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-      } else {
-        isDark = stored === 'true';
-      }
-      setDarkMode(isDark);
-      if (isDark) {
-        document.documentElement.classList.add('dark');
-        document.body.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-        document.body.classList.remove('dark');
-      }
-      setMounted(true);
-    }
-  }, []);
-
-  useEffect(() => {
-    if (!mounted) return;
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('darkMode', darkMode.toString());
-      if (darkMode) {
-        document.documentElement.classList.add('dark');
-        document.body.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-        document.body.classList.remove('dark');
-      }
-      console.log('✅ Dark mode toggled:', darkMode);
-      console.log('✅ HTML classes:', document.documentElement.className);
-      console.log('✅ Body classes:', document.body.className);
-    }
-  }, [darkMode, mounted]);
 
   const handleOfficersUpdate = (newOfficers) => {
     setOfficers(newOfficers)
