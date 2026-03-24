@@ -15,13 +15,10 @@ export function ThemeProvider({ children }) {
 
   useEffect(() => {
     if (!mounted) return;
-    // Only update app theme, never system
-    if (darkMode) {
-      document.documentElement.classList.add('dark');
-      document.body.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      document.body.classList.remove('dark');
+    // Remove all html.dark and body.dark usage. Use .theme-light/.theme-dark on <body> only.
+    if (typeof window !== 'undefined') {
+      document.body.classList.remove('theme-light', 'theme-dark');
+      document.body.classList.add(darkMode ? 'theme-dark' : 'theme-light');
     }
   }, [darkMode, mounted]);
 

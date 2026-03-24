@@ -52,22 +52,21 @@ export default function SystemAdminPage() {
   return (
     <ThemeProvider>
       <ThemeToggleButton />
-    <div className={`min-h-screen transition-all duration-500 ${darkMode ? 'bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800 text-cyan-50' : 'bg-gradient-to-br from-teal-50 to-cyan-50 text-gray-900'} p-3 sm:p-6 md:p-8`}>
+    <div className="min-h-screen transition-all duration-500 p-3 sm:p-6 md:p-8">
       {/* Header Section */}
-      <div className={`max-w-7xl mx-auto mb-6 sm:mb-8 transition-all duration-500 ${darkMode ? 'bg-slate-800/40 border-cyan-700/40' : 'bg-white/40 border-teal-200/40'} backdrop-blur-sm rounded-2xl p-4 sm:p-6`}>
+      <div className="max-w-7xl mx-auto mb-6 sm:mb-8 transition-all duration-500 backdrop-blur-sm rounded-2xl p-4 sm:p-6">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-6">
           <div className="flex-1">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-teal-600 to-cyan-600 dark:from-teal-400 dark:to-cyan-400 bg-clip-text text-transparent mb-1 sm:mb-2 leading-tight pb-1">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-teal-600 to-cyan-600 bg-clip-text text-transparent mb-1 sm:mb-2 leading-tight pb-1">
               CityCare Admin
             </h1>
-            <p className="text-sm sm:text-base md:text-lg text-teal-700 dark:text-cyan-300 font-medium">Officer Onboarding Panel</p>
+            <p className="text-sm sm:text-base md:text-lg text-teal-700 font-medium">Officer Onboarding Panel</p>
           </div>
-          
-          {/* Dark Mode Toggle & Actions */}
+          {/* Theme toggle and actions remain, but no dark: classes */}
           <div className="flex items-center gap-2 sm:gap-3 flex-wrap sm:flex-nowrap">
             <button
               onClick={() => setDarkMode(!darkMode)}
-              className="p-2.5 sm:p-3 rounded-2xl bg-gradient-to-br from-yellow-300 to-amber-300 dark:from-indigo-600 dark:to-purple-600 hover:from-yellow-400 hover:to-amber-400 dark:hover:from-indigo-700 dark:hover:to-purple-700 transition-all duration-500 flex-shrink-0 shadow-lg hover:shadow-xl transform hover:scale-110 active:scale-95"
+              className="p-2.5 sm:p-3 rounded-2xl bg-gradient-to-br from-yellow-300 to-amber-300 hover:from-yellow-400 hover:to-amber-400 transition-all duration-500 flex-shrink-0 shadow-lg hover:shadow-xl transform hover:scale-110 active:scale-95"
               title={darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
             >
               {darkMode ? (
@@ -76,8 +75,6 @@ export default function SystemAdminPage() {
                 <span className="text-xl animate-spin-slow">☀️</span>
               )}
             </button>
-            
-            <button
               onClick={handleSubmitToDatabase}
               disabled={officers.length === 0}
               className="flex items-center gap-1 sm:gap-2 px-3 sm:px-5 py-2 sm:py-3 bg-gradient-to-r from-teal-600 to-cyan-600 dark:from-cyan-600 dark:to-teal-500 text-white dark:text-slate-950 text-xs sm:text-sm font-semibold rounded-2xl hover:from-teal-700 hover:to-cyan-700 dark:hover:from-cyan-700 dark:hover:to-teal-600 shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex-shrink-0"
