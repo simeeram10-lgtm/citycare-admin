@@ -53,7 +53,7 @@ function SystemAdminPageContent() {
       {/* ThemeToggleButton removed from above header */}
       <div className="min-h-screen transition-all duration-500 p-3 sm:p-6 md:p-8 bg-white text-black dark:bg-slate-900 dark:text-white">
       {/* Header Section */}
-      <div className="max-w-7xl mx-auto mb-6 sm:mb-8 transition-all duration-500 backdrop-blur-sm rounded-2xl p-4 sm:p-6 bg-white/80 dark:bg-slate-800/80">
+      <div className="max-w-7xl mx-auto mb-6 sm:mb-8 transition-all duration-500 backdrop-blur-sm rounded-2xl p-4 sm:p-6 bg-white/80 text-black dark:bg-slate-900/90 dark:text-white">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-6">
           <div className="flex-1">
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-teal-600 to-cyan-600 bg-clip-text text-transparent mb-1 sm:mb-2 leading-tight pb-1">
@@ -97,7 +97,7 @@ function SystemAdminPageContent() {
         </div>
 
         {/* Table Section */}
-        <div className="space-y-4 sm:space-y-6 bg-white/50 border-teal-200/30 dark:bg-slate-800/60 dark:border-cyan-700/50 backdrop-blur-sm rounded-2xl p-4 sm:p-6 transition-all duration-500">
+        <div className="space-y-4 sm:space-y-6 bg-white/50 border-teal-200/30 text-black dark:bg-slate-900/80 dark:border-cyan-700/50 dark:text-white backdrop-blur-sm rounded-2xl p-4 sm:p-6 transition-all duration-500">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4">
             <h2 className="text-xl sm:text-2xl font-bold flex items-center gap-2">
               <span className="inline-block w-1 h-8 bg-gradient-to-b from-teal-600 to-cyan-600 rounded-full"></span>
